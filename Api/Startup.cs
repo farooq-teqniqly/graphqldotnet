@@ -1,12 +1,15 @@
-using System;
-using System.IO;
-using System.Reflection;
+using GraphiQl;
+using GraphQL.Server;
+using GraphQL.Types;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.OpenApi.Models;
+using Teqniqly.Samples.Graphql.Graphql.Mutations;
+using Teqniqly.Samples.Graphql.Graphql.Queries;
+using Teqniqly.Samples.Graphql.Graphql.Schemas;
+using Teqniqly.Samples.Graphql.Graphql.Types;
 using Teqniqly.Samples.Graphql.Services;
 
 namespace Api
@@ -25,15 +28,16 @@ namespace Api
         {
             services.AddControllers();
             services.AddSingleton<IProductService, ProductService>();
+            services.AddSingleton<ProductType>();
+            services.AddSingleton<ProductQuery>();
+            services.AddSingleton<ProductMutation>();
+            services.AddSingleton<ISchema, ProductSchema>();
 
-            services.AddSwaggerGen(options =>
+            services.AddGraphQL(options =>
             {
-                options.SwaggerDoc("v1", new OpenApiInfo { Title = "GraphQL Sample API", Version = "v1" });
-
-                var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
-                var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
-                options.IncludeXmlComments(xmlPath);
-            });
+                options.EnableMetrics = false;
+            })
+                .AddSystemTextJson();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -44,24 +48,8 @@ namespace Api
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseHttpsRedirection();
-
-            app.UseRouting();
-
-            app.UseAuthorization();
-
-            app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapControllers();
-            });
-
-            app.UseSwagger();
-
-            app.UseSwaggerUI(
-                c =>
-                {
-                    c.SwaggerEndpoint("/swagger/v1/swagger.json", "GraphQL Sample API");
-                });
+            app.UseGraphiQl("/graphql");
+            app.UseGraphQL<ISchema>();
         }
     }
 }
