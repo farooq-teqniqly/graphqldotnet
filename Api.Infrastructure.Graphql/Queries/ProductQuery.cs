@@ -1,9 +1,9 @@
 ﻿using GraphQL;
 using GraphQL.Types;
-using Teqniqly.Samples.Graphql.Graphql.Types;
 using Teqniqly.Samples.Graphql.Services;
+using Teqniqly.Samples.Graphql.Types;
 
-namespace Teqniqly.Samples.Graphql.Graphql.Queries
+namespace Teqniqly.Samples.Graphql.Queries
 {
     public class ProductQuery : ObjectGraphType
     {

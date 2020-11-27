@@ -1,8 +1,8 @@
 ﻿using GraphQL.Types;
-using Teqniqly.Samples.Graphql.Graphql.Mutations;
-using Teqniqly.Samples.Graphql.Graphql.Queries;
+using Teqniqly.Samples.Graphql.Mutations;
+using Teqniqly.Samples.Graphql.Queries;
 
-namespace Teqniqly.Samples.Graphql.Graphql.Schemas
+namespace Teqniqly.Samples.Graphql.Schemas
 {
     public class ProductSchema : Schema
     {

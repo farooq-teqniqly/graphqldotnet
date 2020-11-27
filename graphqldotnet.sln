@@ -9,6 +9,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Api.Domain", "Api.Domain\Ap
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Api.Infrastructure", "Api.Infrastructure\Api.Infrastructure.csproj", "{6A88F302-410C-4C3D-8E57-2E65725157B7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Api.Infrastructure.Graphql", "Api.Infrastructure.Graphql\Api.Infrastructure.Graphql.csproj", "{B6CC9D55-5681-49F3-9D5C-2E35953B83C5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{6A88F302-410C-4C3D-8E57-2E65725157B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6A88F302-410C-4C3D-8E57-2E65725157B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6A88F302-410C-4C3D-8E57-2E65725157B7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B6CC9D55-5681-49F3-9D5C-2E35953B83C5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B6CC9D55-5681-49F3-9D5C-2E35953B83C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B6CC9D55-5681-49F3-9D5C-2E35953B83C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B6CC9D55-5681-49F3-9D5C-2E35953B83C5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

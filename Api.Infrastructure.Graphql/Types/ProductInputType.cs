@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using GraphQL.Types;
+﻿using GraphQL.Types;
 
-namespace Teqniqly.Samples.Graphql.Graphql.Types
+namespace Teqniqly.Samples.Graphql.Types
 {
     public class ProductInputType : InputObjectGraphType
     {

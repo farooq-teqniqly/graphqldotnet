@@ -6,13 +6,13 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Teqniqly.Samples.Graphql.Graphql.Mutations;
-using Teqniqly.Samples.Graphql.Graphql.Queries;
-using Teqniqly.Samples.Graphql.Graphql.Schemas;
-using Teqniqly.Samples.Graphql.Graphql.Types;
+using Teqniqly.Samples.Graphql.Mutations;
+using Teqniqly.Samples.Graphql.Queries;
+using Teqniqly.Samples.Graphql.Schemas;
 using Teqniqly.Samples.Graphql.Services;
+using Teqniqly.Samples.Graphql.Types;
 
-namespace Api
+namespace Teqniqly.Samples.Graphql
 {
     public class Startup
     {

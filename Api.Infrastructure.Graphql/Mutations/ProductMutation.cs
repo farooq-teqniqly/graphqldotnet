@@ -1,15 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using GraphQL;
 using GraphQL.Types;
-using Teqniqly.Samples.Graphql.Graphql.Types;
 using Teqniqly.Samples.Graphql.Models;
 using Teqniqly.Samples.Graphql.Services;
+using Teqniqly.Samples.Graphql.Types;
 
-namespace Teqniqly.Samples.Graphql.Graphql.Mutations
+namespace Teqniqly.Samples.Graphql.Mutations
 {
     public class ProductMutation : ObjectGraphType
     {

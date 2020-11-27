@@ -1,7 +1,7 @@
 ﻿using GraphQL.Types;
 using Teqniqly.Samples.Graphql.Models;
 
-namespace Teqniqly.Samples.Graphql.Graphql.Types
+namespace Teqniqly.Samples.Graphql.Types
 {
     public sealed class ProductType : ObjectGraphType<Product>
     {
