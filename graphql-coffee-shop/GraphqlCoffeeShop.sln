@@ -13,6 +13,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Api.Infrastructure.EntityFr
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Api.Infrastructure.Graphql", "Api.Infrastructure.Graphql\Api.Infrastructure.Graphql.csproj", "{3D2C5096-318A-4A75-BF43-0B45FE02DFA1}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Api.Infrastructure.EntityFramework.MigrationApp", "Api.Infrastructure.EntityFramework.MigrationApp\Api.Infrastructure.EntityFramework.MigrationApp.csproj", "{10D9F61E-3AC9-499E-AFDC-03E0EC9BD26B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -83,6 +85,18 @@ Global
 		{3D2C5096-318A-4A75-BF43-0B45FE02DFA1}.Release|x64.Build.0 = Release|Any CPU
 		{3D2C5096-318A-4A75-BF43-0B45FE02DFA1}.Release|x86.ActiveCfg = Release|Any CPU
 		{3D2C5096-318A-4A75-BF43-0B45FE02DFA1}.Release|x86.Build.0 = Release|Any CPU
+		{10D9F61E-3AC9-499E-AFDC-03E0EC9BD26B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{10D9F61E-3AC9-499E-AFDC-03E0EC9BD26B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{10D9F61E-3AC9-499E-AFDC-03E0EC9BD26B}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{10D9F61E-3AC9-499E-AFDC-03E0EC9BD26B}.Debug|x64.Build.0 = Debug|Any CPU
+		{10D9F61E-3AC9-499E-AFDC-03E0EC9BD26B}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{10D9F61E-3AC9-499E-AFDC-03E0EC9BD26B}.Debug|x86.Build.0 = Debug|Any CPU
+		{10D9F61E-3AC9-499E-AFDC-03E0EC9BD26B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{10D9F61E-3AC9-499E-AFDC-03E0EC9BD26B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{10D9F61E-3AC9-499E-AFDC-03E0EC9BD26B}.Release|x64.ActiveCfg = Release|Any CPU
+		{10D9F61E-3AC9-499E-AFDC-03E0EC9BD26B}.Release|x64.Build.0 = Release|Any CPU
+		{10D9F61E-3AC9-499E-AFDC-03E0EC9BD26B}.Release|x86.ActiveCfg = Release|Any CPU
+		{10D9F61E-3AC9-499E-AFDC-03E0EC9BD26B}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
