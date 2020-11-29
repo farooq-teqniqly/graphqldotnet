@@ -18,7 +18,7 @@ namespace Teqniqly.Samples.Graphql.Mutations
                 {
                     try
                     {
-                        return productService.AddProduct(context.GetArgument<Product>("product"));
+                        return productService.AddProductAsync(context.GetArgument<ProductModel>("product")).Result;
                     }
                     catch (InvalidOperationException ex)
                     {
@@ -33,9 +33,9 @@ namespace Teqniqly.Samples.Graphql.Mutations
                 arguments: new QueryArguments(
                     new QueryArgument<IntGraphType> { Name = "id" },
                     new QueryArgument<ProductInputType> { Name = "product" }),
-                resolve: context => productService.UpdateProduct(
+                resolve: context => productService.UpdateProductAsync(
                     context.GetArgument<int>("id"),
-                    context.GetArgument<Product>("product")));
+                    context.GetArgument<ProductModel>("product")).Result);
 
             Field<BooleanGraphType>(
                 "deleteProduct",
@@ -43,7 +43,7 @@ namespace Teqniqly.Samples.Graphql.Mutations
                     new QueryArgument<IntGraphType> { Name = "id" }),
                 resolve: context =>
                 {
-                    productService.DeleteProduct(context.GetArgument<int>("id"));
+                    productService.DeleteProductAsync(context.GetArgument<int>("id")).Wait();
                     return true;
                 });
         }

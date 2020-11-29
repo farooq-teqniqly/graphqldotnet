@@ -3,7 +3,7 @@ using Teqniqly.Samples.Graphql.Models;
 
 namespace Teqniqly.Samples.Graphql.Types
 {
-    public sealed class ProductType : ObjectGraphType<Product>
+    public sealed class ProductType : ObjectGraphType<IProduct>
     {
         public ProductType()
         {

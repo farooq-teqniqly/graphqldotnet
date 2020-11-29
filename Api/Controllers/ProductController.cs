@@ -19,13 +19,13 @@ namespace Teqniqly.Samples.Graphql.Controllers
         [HttpGet]
         public IActionResult GetAllProducts()
         {
-            return Ok(_productService.GetAllProducts());
+            return Ok(_productService.GetAllProductsAsync());
         }
 
         [HttpGet("{id}", Name = "GetProduct")]
         public IActionResult GetProduct(int id)
         {
-            var product = _productService.GetProduct(id);
+            var product = _productService.GetProductAsync(id);
 
             if (product == null)
             {
@@ -36,11 +36,11 @@ namespace Teqniqly.Samples.Graphql.Controllers
         }
 
         [HttpPost]
-        public IActionResult AddProduct([FromBody] Product product)
+        public IActionResult AddProduct([FromBody] IProduct product)
         {
             try
             {
-                var newProduct = _productService.AddProduct(product);
+                var newProduct = _productService.AddProductAsync(product);
                 return CreatedAtRoute("GetProduct", new {id = newProduct.Id}, newProduct);
             }
             catch (InvalidOperationException)
@@ -50,11 +50,11 @@ namespace Teqniqly.Samples.Graphql.Controllers
         }
 
         [HttpPut("{id}")]
-        public IActionResult UpdateProduct(int id, [FromBody] Product product)
+        public IActionResult UpdateProduct(int id, [FromBody] IProduct product)
         {
             try
             {
-                return Ok(_productService.UpdateProduct(id, product));
+                return Ok(_productService.UpdateProductAsync(id, product));
             }
             catch (InvalidOperationException)
             {
@@ -65,7 +65,7 @@ namespace Teqniqly.Samples.Graphql.Controllers
         [HttpDelete("{id}")]
         public IActionResult DeleteProduct(int id)
         {
-            _productService.DeleteProduct(id);
+            _productService.DeleteProductAsync(id);
             return NoContent();
         }
     }

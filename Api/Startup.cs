@@ -3,6 +3,7 @@ using GraphQL.Server;
 using GraphQL.Types;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -27,21 +28,26 @@ namespace Teqniqly.Samples.Graphql
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-            services.AddSingleton<IProductService, ProductService>();
-            services.AddSingleton<ProductType>();
-            services.AddSingleton<ProductQuery>();
-            services.AddSingleton<ProductMutation>();
-            services.AddSingleton<ISchema, ProductSchema>();
+            services.AddScoped<IProductService, ProductService>();
+            services.AddScoped<IDataStoreService, EntityFrameworkDataStoreService>();
+            services.AddScoped<ProductType>();
+            services.AddScoped<ProductQuery>();
+            services.AddScoped<ProductMutation>();
+            services.AddScoped<ISchema, ProductSchema>();
 
             services.AddGraphQL(options =>
             {
                 options.EnableMetrics = false;
             })
                 .AddSystemTextJson();
+
+            services.AddDbContext<GraphqlDbContext>(options =>
+                options.UseSqlServer(
+                    @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=graphql-products;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False"));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, GraphqlDbContext dbContext)
         {
             if (env.IsDevelopment())
             {
@@ -50,6 +56,8 @@ namespace Teqniqly.Samples.Graphql
 
             app.UseGraphiQl("/graphql");
             app.UseGraphQL<ISchema>();
+
+            dbContext.Database.EnsureCreated();
         }
     }
 }

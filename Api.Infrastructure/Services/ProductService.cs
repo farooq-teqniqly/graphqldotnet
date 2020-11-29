@@ -1,54 +1,91 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
+using Teqniqly.Samples.Graphql.Dtos;
 using Teqniqly.Samples.Graphql.Models;
 
 namespace Teqniqly.Samples.Graphql.Services
 {
     public class ProductService : IProductService
     {
-        private static readonly Dictionary<int, Product> Store = new Dictionary<int, Product>();
+        private readonly IDataStoreService _dataStoreService;
 
-        public IEnumerable<Product> GetAllProducts()
+        public ProductService(IDataStoreService dataStoreService)
         {
-            return Store.Values;
+            _dataStoreService = dataStoreService;
         }
 
-        public Product GetProduct(int id)
+        public async IAsyncEnumerable<IProduct> GetAllProductsAsync()
         {
-            return Store.SingleOrDefault(kvp => kvp.Key == id).Value;
-        }
+            var dtos = await _dataStoreService.GetAllAsync<ProductDto>();
 
-        public Product AddProduct(Product product)
-        {
-            if (Store.ContainsKey(product.Id))
+            foreach (var dto in dtos)
             {
-                throw new InvalidOperationException($"The product with id {product.Id} already exists.");
+                yield return new ProductModel
+                {
+                    Id = dto.Id,
+                    Name = dto.Name,
+                    Price = dto.Price
+                };
+            }
+        }
+
+        public async Task<IProduct> GetProductAsync(int id)
+        {
+            var dto = await _dataStoreService.FindAsync<ProductDto>(id);
+
+            if (dto == null)
+            {
+                return  null;
             }
 
-            Store.Add(product.Id, product);
-
-            return product;
+            return new ProductModel
+            {
+                Id = dto.Id,
+                Name = dto.Name,
+                Price = dto.Price
+            };
         }
 
-        public Product UpdateProduct(int id, Product product)
+        public async Task<IProduct> AddProductAsync(IProduct product)
         {
-            var productToUpdate = GetProduct(id);
-
-            if (productToUpdate == null)
+            var dto = new ProductDto
             {
-                throw new InvalidOperationException($"The product with id {id} was not found.");
+                Name = product.Name,
+                Price = product.Price
+            };
+
+            var addedProductDto = await _dataStoreService.InsertAsync(dto);
+
+            return new ProductModel
+            {
+                Id = addedProductDto.Id,
+                Name = addedProductDto.Name,
+                Price = addedProductDto.Price
+            };
+
+        }
+
+        public async Task<IProduct> UpdateProductAsync(int id, IProduct product)
+        {
+            var productToUpdateDto = await _dataStoreService.FindAsync<ProductDto>(id);
+
+            if (productToUpdateDto == null)
+            {
+                return null;
             }
 
-            product.Id = id;
-            Store[id] = product;
+            productToUpdateDto = new ProductDto
+            {
+                Name = product.Name,
+                Price = product.Price
+            };
 
-            return product;
+            return await _dataStoreService.UpdateAsync(id, productToUpdateDto);
         }
 
-        public void DeleteProduct(int id)
+        public async Task DeleteProductAsync(int id)
         {
-            Store.Remove(id);
+            await _dataStoreService.DeleteAsync<ProductDto>(id);
         }
     }
 }
