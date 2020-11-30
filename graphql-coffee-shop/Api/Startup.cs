@@ -1,3 +1,4 @@
+using AutoMapper;
 using GraphiQl;
 using GraphQL.Server;
 using GraphQL.Types;
@@ -7,6 +8,8 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Teqniqly.Samples.Graphql.CoffeeShop.Dtos;
+using Teqniqly.Samples.Graphql.CoffeeShop.Services;
 
 namespace Teqniqly.Samples.Graphql.CoffeeShop
 {
@@ -30,6 +33,17 @@ namespace Teqniqly.Samples.Graphql.CoffeeShop
 
             services.AddDbContext<GraphqlDbContext>(options =>
                 options.UseSqlServer(Configuration["connectionString"]));
+
+            services.AddScoped<IDataStoreService, EntityFrameworkDataStoreService>();
+            services.AddScoped<IMenuService, MenuService>();
+            services.AddScoped<IReservationService, ReservationService>();
+
+            services.AddAutoMapper(config =>
+            {
+                config.CreateMap<MenuModel, MenuDto>().ReverseMap();
+                config.CreateMap<SubMenuModel, SubMenuDto>().ReverseMap();
+                config.CreateMap<ReservationModel, ReservationDto>().ReverseMap();
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

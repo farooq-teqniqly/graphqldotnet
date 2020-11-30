@@ -19,7 +19,8 @@ namespace Teqniqly.Samples.Graphql.CoffeeShop
         {
             modelBuilder.Entity<SubMenuDto>()
                 .HasOne(dto => (MenuDto) dto.Menu)
-                .WithMany(m => (IEnumerable<SubMenuDto>) m.SubMenus);
+                .WithMany(m => (IEnumerable<SubMenuDto>) m.SubMenus)
+                .OnDelete(DeleteBehavior.Cascade);
         }
     }
 }

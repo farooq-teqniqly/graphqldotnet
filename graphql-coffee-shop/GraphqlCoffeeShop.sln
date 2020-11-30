@@ -15,6 +15,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Api.Infrastructure.Graphql"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Api.Infrastructure.EntityFramework.MigrationApp", "Api.Infrastructure.EntityFramework.MigrationApp\Api.Infrastructure.EntityFramework.MigrationApp.csproj", "{10D9F61E-3AC9-499E-AFDC-03E0EC9BD26B}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{E7D61CB5-CAB2-4FD4-B734-7FA32FAFF9E5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Api.Infrastructure.IntegrationTests", "Api.Infrastructure.IntegrationTests\Api.Infrastructure.IntegrationTests.csproj", "{3519BF7B-5FA8-4579-BEF6-01874F270E27}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -97,9 +101,24 @@ Global
 		{10D9F61E-3AC9-499E-AFDC-03E0EC9BD26B}.Release|x64.Build.0 = Release|Any CPU
 		{10D9F61E-3AC9-499E-AFDC-03E0EC9BD26B}.Release|x86.ActiveCfg = Release|Any CPU
 		{10D9F61E-3AC9-499E-AFDC-03E0EC9BD26B}.Release|x86.Build.0 = Release|Any CPU
+		{3519BF7B-5FA8-4579-BEF6-01874F270E27}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3519BF7B-5FA8-4579-BEF6-01874F270E27}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3519BF7B-5FA8-4579-BEF6-01874F270E27}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{3519BF7B-5FA8-4579-BEF6-01874F270E27}.Debug|x64.Build.0 = Debug|Any CPU
+		{3519BF7B-5FA8-4579-BEF6-01874F270E27}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{3519BF7B-5FA8-4579-BEF6-01874F270E27}.Debug|x86.Build.0 = Debug|Any CPU
+		{3519BF7B-5FA8-4579-BEF6-01874F270E27}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3519BF7B-5FA8-4579-BEF6-01874F270E27}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3519BF7B-5FA8-4579-BEF6-01874F270E27}.Release|x64.ActiveCfg = Release|Any CPU
+		{3519BF7B-5FA8-4579-BEF6-01874F270E27}.Release|x64.Build.0 = Release|Any CPU
+		{3519BF7B-5FA8-4579-BEF6-01874F270E27}.Release|x86.ActiveCfg = Release|Any CPU
+		{3519BF7B-5FA8-4579-BEF6-01874F270E27}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{3519BF7B-5FA8-4579-BEF6-01874F270E27} = {E7D61CB5-CAB2-4FD4-B734-7FA32FAFF9E5}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {834019F6-037D-472D-ABBC-5E62C53A715B}

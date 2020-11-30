@@ -6,8 +6,4 @@
     <AssemblyName>Teqniqly.Samples.Graphql.CoffeeShop.Api.Domain</AssemblyName>
   </PropertyGroup>
 
-  <ItemGroup>
-    <Folder Include="Services\" />
-  </ItemGroup>
-
 </Project>
