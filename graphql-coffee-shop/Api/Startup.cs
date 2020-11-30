@@ -1,5 +1,6 @@
 using AutoMapper;
 using GraphiQl;
+using GraphQL.Execution;
 using GraphQL.Server;
 using GraphQL.Types;
 using Microsoft.AspNetCore.Builder;
@@ -9,7 +10,11 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Teqniqly.Samples.Graphql.CoffeeShop.Dtos;
+using Teqniqly.Samples.Graphql.CoffeeShop.Models;
+using Teqniqly.Samples.Graphql.CoffeeShop.Queries;
+using Teqniqly.Samples.Graphql.CoffeeShop.Schemas;
 using Teqniqly.Samples.Graphql.CoffeeShop.Services;
+using Teqniqly.Samples.Graphql.CoffeeShop.Types;
 
 namespace Teqniqly.Samples.Graphql.CoffeeShop
 {
@@ -27,7 +32,8 @@ namespace Teqniqly.Samples.Graphql.CoffeeShop
         {
             services.AddGraphQL(options =>
                 {
-                    options.EnableMetrics = false;
+                    options.EnableMetrics = true;
+                    options.UnhandledExceptionDelegate = context => throw new UnhandledError(context.ErrorMessage, context.OriginalException);
                 })
                 .AddSystemTextJson();
 
@@ -44,6 +50,17 @@ namespace Teqniqly.Samples.Graphql.CoffeeShop
                 config.CreateMap<SubMenuModel, SubMenuDto>().ReverseMap();
                 config.CreateMap<ReservationModel, ReservationDto>().ReverseMap();
             });
+
+            services.AddScoped<MenuType>();
+            services.AddScoped<MenuSummaryType>();
+            services.AddScoped<SubMenuType>();
+            services.AddScoped<ReservationType>();
+            services.AddScoped<MenuQuery>();
+            services.AddScoped<MenusQuery>();
+            services.AddScoped<ReservationQuery>();
+            services.AddScoped<RootQuery>();
+            services.AddScoped<ISchema, RootSchema>();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

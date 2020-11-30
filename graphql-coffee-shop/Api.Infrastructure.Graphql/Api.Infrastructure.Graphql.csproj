@@ -11,11 +11,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Models\" />
     <Folder Include="Mutations\" />
-    <Folder Include="Queries\" />
-    <Folder Include="Schemas\" />
-    <Folder Include="Types\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Api.Domain\Api.Domain.csproj" />
   </ItemGroup>
 
 </Project>

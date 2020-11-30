@@ -14,6 +14,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Api.Domain\Api.Domain.csproj" />
     <ProjectReference Include="..\Api.Infrastructure.EntityFramework\Api.Infrastructure.EntityFramework.csproj" />
+    <ProjectReference Include="..\Api.Infrastructure.Graphql\Api.Infrastructure.Graphql.csproj" />
   </ItemGroup>
 
 </Project>

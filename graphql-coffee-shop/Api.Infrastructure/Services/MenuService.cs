@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using Teqniqly.Samples.Graphql.CoffeeShop.Dtos;
@@ -12,7 +13,7 @@ namespace Teqniqly.Samples.Graphql.CoffeeShop.Services
         {
         }
 
-        public async Task<IEnumerable<IMenu>> GetsMenusAsync()
+        public async Task<IEnumerable<IMenu>> GetMenusAsync()
         {
             var dtos = await DataStoreService.GetAllAsync<MenuDto>();
             var models = Mapper.Map<IEnumerable<MenuModel>>(dtos);
@@ -41,6 +42,18 @@ namespace Teqniqly.Samples.Graphql.CoffeeShop.Services
             var deletedDto = await DataStoreService.DeleteAsync<MenuDto>(id);
             var model = Mapper.Map<MenuModel>(deletedDto);
             return model;
+        }
+
+        public async Task<IMenu> GetMenuAsync(int id)
+        {
+            var menuDto = await DataStoreService.FindAsync<MenuDto>(id);
+            var subMenuDtos = (await DataStoreService.GetAllAsync<SubMenuDto>()).Where(sm => sm.Menu.Id == id);
+
+            var subMenuModels = Mapper.Map<IEnumerable<SubMenuModel>>(subMenuDtos);
+            var menuModel = Mapper.Map<MenuModel>(menuDto);
+            menuModel.SubMenus = subMenuModels.ToArray();
+
+            return menuModel;
         }
     }
 }

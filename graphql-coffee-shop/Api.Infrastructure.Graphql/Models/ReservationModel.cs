@@ -1,7 +1,6 @@
 ﻿using System;
-using Teqniqly.Samples.Graphql.CoffeeShop.Models;
 
-namespace Teqniqly.Samples.Graphql.CoffeeShop
+namespace Teqniqly.Samples.Graphql.CoffeeShop.Models
 {
     public class ReservationModel : IReservation
     {

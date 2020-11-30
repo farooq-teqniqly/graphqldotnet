@@ -53,11 +53,16 @@ namespace Api.Infrastructure.IntegrationTests
                 };
 
 
-                var actualMenus = (await MenuService.GetsMenusAsync())
+                var actualMenus = (await MenuService.GetMenusAsync())
                     .Where(m => menuIds.Contains(m.Id))
                     .ToList();
 
                 actualMenus.Count.Should().Be(2);
+
+                foreach (var actualMenu in actualMenus)
+                {
+                    actualMenu.SubMenus.Count.Should().Be(2);
+                }
             }
             finally
             {

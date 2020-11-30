@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Newtonsoft.Json;
+using Teqniqly.Samples.Graphql.CoffeeShop.Models;
 
 namespace Teqniqly.Samples.Graphql.CoffeeShop.Serialization
 {
