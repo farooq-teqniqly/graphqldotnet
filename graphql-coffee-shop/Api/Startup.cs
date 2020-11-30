@@ -11,6 +11,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Teqniqly.Samples.Graphql.CoffeeShop.Dtos;
 using Teqniqly.Samples.Graphql.CoffeeShop.Models;
+using Teqniqly.Samples.Graphql.CoffeeShop.Mutations;
 using Teqniqly.Samples.Graphql.CoffeeShop.Queries;
 using Teqniqly.Samples.Graphql.CoffeeShop.Schemas;
 using Teqniqly.Samples.Graphql.CoffeeShop.Services;
@@ -55,10 +56,15 @@ namespace Teqniqly.Samples.Graphql.CoffeeShop
             services.AddScoped<MenuSummaryType>();
             services.AddScoped<SubMenuType>();
             services.AddScoped<ReservationType>();
+            services.AddScoped<MenuInputType>();
+            services.AddScoped<SubMenuInputType>();
+            services.AddScoped<InputObjectGraphType<ListGraphType<SubMenuInputType>>>();
             services.AddScoped<MenuQuery>();
             services.AddScoped<MenusQuery>();
             services.AddScoped<ReservationQuery>();
             services.AddScoped<RootQuery>();
+            services.AddScoped<MenuMutation>();
+            services.AddScoped<RootMutation>();
             services.AddScoped<ISchema, RootSchema>();
 
         }

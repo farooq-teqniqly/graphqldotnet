@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using GraphQL.Types;
+﻿using GraphQL.Types;
 using Teqniqly.Samples.Graphql.CoffeeShop.Models;
 
 namespace Teqniqly.Samples.Graphql.CoffeeShop.Types
